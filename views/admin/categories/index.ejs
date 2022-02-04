@@ -1,0 +1,81 @@
+<%- include('../../../views/partials/header') -%>
+<%- include('../../../views/partials/navbar') -%>
+<div class="container">
+    <h1>Categorias</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Slug</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% categories.forEach(category =>{ %> <% /* Pegando os dados do JS no banco de dados */ %>
+                <tr>
+                    <th><%= category.id %></th> <% /* Colocando na tela */ %>
+                    <th><%= category.title %></th>
+                    <th><%= category.slug %></th>
+                    <th>
+                        <a href="/admin/categories/edit/<%= category.id %> " class="btn btn-warning">Editar</a>
+                        <form method="post" action="/categories/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)">
+                            <input type="hidden" name="id" value="<%= category.id %> ">
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </th>
+                </tr>
+            <% }) %>      
+        </tbody>
+    </table>
+</div>
+<%- include('../../../views/partials/footer') -%>
+<div class="btn-create">
+    <div><a href="/admin/categories/new">+</a></div>
+</div>
+
+<style>
+    h1 {
+        margin-top: 25px;
+    }
+
+    table {
+        margin-top: 25px;
+    }
+
+    .btn-create a {
+        padding: 20px;
+    }
+
+    .btn-create {
+        position: fixed;
+        right: 75px;
+        bottom: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background: #28a745;
+        border-radius: 50%;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-create a {
+        font-size: 30px;
+        font-weight: 500;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<script>
+    function confirmarDelecao(event, form){
+        event.preventDefault() // Impede que o formulário seja enviado
+        var decision = confirm("Você deseja deletar essa categoria?")
+
+        if(decision){
+            form.submit() // Envia os dados do formulário
+        }
+    }
+</script>

@@ -1,0 +1,34 @@
+<%- include('../../../views/partials/header') -%>
+<%- include('../../../views/partials/navbar') -%>
+<div class="container">
+    <div class="card-box">
+        <h1>Cadastro de Categoria</h1>
+        <form method="post" action="/categories/save">
+            <input class="form-control" type="text" name="title" placeholder="Defina o título da categoria" required>
+            <button class="btn btn-success">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    h1 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+
+    .card-box {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        padding: 40px;
+        border-radius: 10px;
+        margin-top: 30px;
+        box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    }
+</style>
+<%- include('../../../views/partials/footer') -%> 

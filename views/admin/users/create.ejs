@@ -1,0 +1,43 @@
+<%- include('../../../views/partials/header') -%>
+<%- include('../../../views/partials/navbar') -%>
+
+<div class="container">
+    <div class="card-box">
+        <h2>Título</h2>
+        <form action="/users/create" method="post">
+            <input class="form-control" type="email" name="email" placeholder="email@exemplo.com">
+            <input class="form-control" type="password" name="password" placeholder="****">
+            <button type="submit" class="btn btn-success btn-block">Criar</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../../../views/partials/footer') -%>
+
+<style>
+    .card-box {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        padding: 40px;
+        border-radius: 10px;
+        margin-top: 30px;
+        box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    }
+
+    input {
+        margin-bottom: 15px;
+    }
+
+    h2::after{
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: #212529;
+        margin: auto 0px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+</style>

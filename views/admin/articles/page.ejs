@@ -1,0 +1,56 @@
+<%- include('../../partials/header') -%>
+<%- include('../../partials/homenavbar') -%>
+<body>
+    <div class="container">
+        <% result.articles.rows.forEach(article => { %>
+            <div class="card-box">
+                <div>
+                    <h2><%= article.title %> </h2>
+                </div>
+                <div>
+                    <a href="/<%= article.slug %> " class="btn btn-success">ler Artigo</a>
+                </div>
+            </div>
+        <% }) %>
+        <div class="row">
+            <div class="col col-12">
+                <% if (result.page > 2) { %>
+                    <a style="float:left" href="/articles/page/ <%= result.page - 1 %>"><< Prev</a>
+                <% }else if (result.page == 2) { %>
+                    <a style="float: left" href="/"><< Prev</a>
+                <% } %>     
+
+                <% if (result.next) { %>
+                    <a style="float:right" href="/articles/page/ <%= result.page + 1 %>">Next >></a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../partials/footer') -%>
+
+<style>
+    .card-box {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        padding: 40px;
+        border-radius: 10px;
+        margin-top: 30px;
+        box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+        margin-top: 35px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .row {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+</style>

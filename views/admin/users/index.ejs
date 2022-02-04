@@ -1,0 +1,63 @@
+<%- include('../../../views/partials/header') -%>
+<%- include('../../../views/partials/navbar') -%>
+
+<div class="container">
+    <h1>Usuários</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user =>{ %> <% /* Pegando os dados do JS no banco de dados */ %>
+                <tr>
+                    <td><%= user.id %> </td>
+                    <td><%= user.email %> </td>
+                </tr>
+            <% }) %>      
+        </tbody>
+    </table>
+</div>
+
+<%- include('../../../views/partials/footer') -%>
+
+<div class="btn-create">
+    <div><a href="/admin/users/create">+</a></div>
+</div>
+
+<style>
+    h1 {
+        margin-top: 25px;
+    }
+
+    table {
+        margin-top: 25px;
+    }
+
+    .btn-create a {
+        padding: 20px;
+    }
+
+    .btn-create {
+        position: fixed;
+        right: 75px;
+        bottom: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background: #28a745;
+        border-radius: 50%;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-create a {
+        font-size: 30px;
+        font-weight: 500;
+        color: white;
+        text-decoration: none;
+    }
+</style>
